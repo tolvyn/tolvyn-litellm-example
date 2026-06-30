@@ -1,0 +1,21 @@
+# Minimal LiteLLM config routing through TOLVYN.
+# Three things differ from a normal LiteLLM config:
+#   1. api_base points at your TOLVYN proxy route for the provider
+#   2. api_key is your TOLVYN key (NOT the provider key — that lives in TOLVYN)
+#   3. extra_headers carry the attribution you want recorded
+#
+# Swap provider by changing the proxy route + model:
+#   openai    -> https://proxy.tolvyn.io/v1/proxy/openai/v1
+#   anthropic -> https://proxy.tolvyn.io/v1/proxy/anthropic/v1
+#   google    -> https://proxy.tolvyn.io/v1/proxy/google/v1
+#   deepseek  -> https://proxy.tolvyn.io/v1/proxy/deepseek/v1
+
+model_list:
+  - model_name: my-model
+    litellm_params:
+      model: openai/deepseek-chat                 # openai/ = OpenAI-compatible wire format
+      api_base: https://proxy.tolvyn.io/v1/proxy/deepseek/v1
+      api_key: os.environ/TOLVYN_KEY              # TOLVYN key, NOT the provider key
+      extra_headers:
+        X-Tolvyn-Team: my-team                    # must match a team name in your TOLVYN account
+        X-Tolvyn-Agent: my-agent                  # free text
