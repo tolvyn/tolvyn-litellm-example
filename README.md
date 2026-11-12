@@ -11,8 +11,8 @@ LiteLLM and TOLVYN do different jobs and compose cleanly:
 
 - **LiteLLM** is your routing/translation layer — one interface to OpenAI,
   Anthropic, Gemini, DeepSeek, and 100+ providers.
-- **TOLVYN** is your financial-control layer — it answers *who* a cost belongs to,
-  *whether* they're allowed to spend it, and writes an immutable record of every call.
+- **TOLVYN** is the control and evidence layer for AI spend — it answers *who* a cost
+  belongs to, *whether* they're allowed to spend it, and keeps a tamper-evident record of every call.
 
 You keep your LiteLLM setup exactly as it is. You point it at TOLVYN, and every call
 LiteLLM routes is attributed and metered underneath. Two pieces, one request path.
@@ -22,8 +22,8 @@ LiteLLM routes is attributed and metered underneath. Two pieces, one request pat
 - **Enforced budgets** — calls can be hard-blocked at a cap, not just reported after.
 - **Attribution down to end-customer** — bill or cost-allocate per team, agent, or
   the customer you're reselling AI to.
-- **An immutable, hash-chained ledger** — a tamper-evident audit trail for disputes
-  and compliance.
+- **A hash-chained, tamper-evident ledger** — an audit trail for disputes and
+  compliance.
 
 ## Setup
 
